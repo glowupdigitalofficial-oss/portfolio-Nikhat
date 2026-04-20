@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikhat Tabassum | Digital Marketing Specialist & Business Operations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f4c75;
+            --secondary: #3282b8;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #1a2332;
+            --gold: #ffd700;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 76, 117, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 100px 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 2rem;
+            background: white;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(15, 76, 117, 0.05), rgba(50, 130, 184, 0.05));
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 80px 2rem;
+            background: var(--light);
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--gold);
+        }
+
+        .skill-card h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            padding-left: 3rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 4.5px;
+            top: 12px;
+            width: 3px;
+            height: calc(100% + 1.5rem);
+            background: var(--secondary);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-content {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .timeline-content h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Education Section */
+        .education {
+            padding: 80px 2rem;
+            background: var(--light);
+        }
+
+        .education-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .edu-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+        }
+
+        .edu-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-card .year {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .edu-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, rgba(15, 76, 117, 0.05), rgba(50, 130, 184, 0.05));
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-link {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-link:hover {
+            background: white;
+            color: var(--primary);
+            border-color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nikhat Tabassum</h1>
+            <p class="subtitle">Digital Marketing Specialist | Business Operations Professional</p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">
+                Results-Driven Professional with 3+ Years of Experience in Digital Marketing, Business Operations & Strategic Communications
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+            <div class="contact-info">
+                <div class="info-item">📧 nikhatt09@gmail.com</div>
+                <div class="info-item">📱 +91 6305579839</div>
+                <div class="info-item">📍 Hyderabad, India</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Professional Profile</h3>
+                <p>
+                    I'm a results-driven Digital Marketing professional and MBA candidate with 3+ years of progressive experience in school administration, data management, and digital operations. My expertise spans modern digital marketing, strategic communications, and business transformation initiatives.
+                </p>
+                <p>
+                    Currently pursuing my MBA in Marketing & Business Strategy, I combine technical proficiency with strategic thinking to deliver measurable business impact. I'm passionate about leveraging data-driven marketing strategies and modern digital tools to transform organizational goals into actionable results.
+                </p>
+                <p>
+                    <strong>Career Vision:</strong> Build expertise in business strategy and corporate communications within global professional services firms, contributing to digital transformation and advisory initiatives.
+                </p>
+            </div>
+            <div class="highlights">
+                <div class="highlight-box">
+                    <strong>📈 3+ Years Experience</strong>
+                    Progressive roles in digital operations, marketing & administration
+                </div>
+                <div class="highlight-box">
+                    <strong>🎓 MBA Candidate</strong>
+                    Specializing in Marketing & Business Strategy at ISL Engineering College
+                </div>
+                <div class="highlight-box">
+                    <strong>💼 MBA + BBA Holder</strong>
+                    Strong academic foundation in Business & Marketing principles
+                </div>
+                <div class="highlight-box">
+                    <strong>🌍 Global Mindset</strong>
+                    Open to relocate across India & internationally for career growth
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="skills-container">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>📱 Digital Marketing</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SEO</span>
+                        <span class="skill-tag">SEM</span>
+                        <span class="skill-tag">Social Media</span>
+                        <span class="skill-tag">Content Strategy</span>
+                        <span class="skill-tag">Email Marketing</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>💻 Technical Tools</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">WordPress</span>
+                        <span class="skill-tag">Elementor</span>
+                        <span class="skill-tag">MS Office Suite</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Tally ERP 9</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>📊 Data & Analytics</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Excel (Advanced)</span>
+                        <span class="skill-tag">Pivot Tables</span>
+                        <span class="skill-tag">VLOOKUP</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Reporting</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>🎯 Business Skills</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Stakeholder Management</span>
+                        <span class="skill-tag">Business Development</span>
+                        <span class="skill-tag">Corporate Communication</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>🧠 Soft Skills</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Problem-solving</span>
+                        <span class="skill-tag">Critical Thinking</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>🌐 Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Hindi (Fluent)</span>
+                        <span class="skill-tag">Urdu (Native)</span>
+                        <span class="skill-tag">Telugu (Learning)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="experience-container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Computer Operator (Digital Operations Manager)</h4>
+                        <div class="timeline-date">Jan 2022 – Sep 2025 | Good Faith High School, Hyderabad</div>
+                        <div class="timeline-description">
+                            <strong>Key Achievements:</strong><br>
+                            ✓ Managed comprehensive databases for 800+ students with 100% data accuracy<br>
+                            ✓ Designed & produced professional reports, mark sheets, certificates using advanced MS Word/Excel<br>
+                            ✓ Administered digital presence (website, social media, email communications)<br>
+                            ✓ Reduced manual processing time by 40% through digital record system implementation<br>
+                            ✓ Coordinated digital operations for 20+ faculty members<br>
+                            ✓ Achieved zero compliance errors in government form submissions
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="education-container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <h4>MBA — Master of Business Administration</h4>
+                    <div class="year">Sep 2025 – Present</div>
+                    <p><strong>ISL Engineering College, Hyderabad</strong><br>
+                    Specializing in Marketing & Business Strategy.<br><br>
+                    <strong>Relevant Coursework:</strong> Strategic Management, Digital Marketing, Organizational Behavior, Financial Management</p>
+                </div>
+                <div class="edu-card">
+                    <h4>BBA — Bachelor of Business Administration</h4>
+                    <div class="year">Jun 2022 – Jun 2025</div>
+                    <p><strong>Govt. City College (A), Hyderabad</strong><br>
+                    Graduated with strong academic standing.<br><br>
+                    <strong>Core Modules:</strong> Marketing Principles, Business Communication, Accounting, HR Management</p>
+                </div>
+                <div class="edu-card">
+                    <h4>Digital Marketing Certification</h4>
+                    <div class="year">Certified</div>
+                    <p>Comprehensive training covering SEO, SEM, Social Media Marketing, and Analytics</p>
+                </div>
+                <div class="edu-card">
+                    <h4>MS Office Advanced Certification</h4>
+                    <div class="year">Certified</div>
+                    <p>Advanced proficiency in Word, Excel (VLOOKUP, Pivot Tables), PowerPoint, and Data Entry</p>
+                </div>
+                <div class="edu-card">
+                    <h4>WordPress & Elementor Proficiency</h4>
+                    <div class="year">Certified</div>
+                    <p>Independently managed school website content, design, and updates</p>
+                </div>
+                <div class="edu-card">
+                    <h4>Commerce Stream (Higher Secondary)</h4>
+                    <div class="year">Completed 2022</div>
+                    <p><strong>Good Faith High School</strong><br>
+                    Completed with distinction in Accountancy, Economics, and Business Studies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Highlights -->
+    <section class="certifications">
+        <div class="cert-grid" style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title" style="grid-column: 1 / -1;">Achievements & Recognition</h2>
+            <div class="cert-item">
+                <div class="cert-icon">🏆</div>
+                <h4>Outstanding Digital Operations</h4>
+                <p>Recognized by school management for excellence in digital transformation initiatives</p>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">📈</div>
+                <h4>Process Optimization</h4>
+                <p>40% reduction in manual processing time through system implementation</p>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">💯</div>
+                <h4>Data Accuracy</h4>
+                <p>100% accuracy maintained in managing 800+ student records and compliance</p>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🎯</div>
+                <h4>Marketing Excellence</h4>
+                <p>Active participation in business plan competitions & marketing case studies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Let's Work Together!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.95;">
+                I'm eager to contribute my expertise to innovative projects and help drive digital transformation.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:nikhatt09@gmail.com" class="contact-link">📧 Email Me</a>
+                <a href="tel:+916305579839" class="contact-link">📱 Call Me</a>
+                <a href="https://linkedin.com/in/nikhattabassum" target="_blank" class="contact-link">💼 LinkedIn</a>
+            </div>
+            <div style="margin-top: 3rem;">
+                <p style="margin-bottom: 1.5rem;">Available for: Full-time Roles | Internships | Consulting | Project Work</p>
+                <p style="font-size: 0.95rem; opacity: 0.9;">📍 Based in Hyderabad, India | Willing to Relocate Internationally</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Nikhat Tabassum. All rights reserved. | Digital Marketing Specialist & Business Operations Professional</p>
+        <p>Built with passion to showcase excellence in Digital Marketing & Business Strategy</p>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior and active nav highlighting
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add scroll animation to elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .edu-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
